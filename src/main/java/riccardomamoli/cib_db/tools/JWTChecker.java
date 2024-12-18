@@ -68,6 +68,10 @@ public class JWTChecker extends OncePerRequestFilter {
             return true;
         }
 
+        if (request.getMethod().equals("GET") && new AntPathMatcher().match("/prenotazioni/dates/**", request.getServletPath())) {
+            return true;
+        }
+
         if (new AntPathMatcher().match("/utenti/me", request.getServletPath())) {
             return false;
         }
